@@ -54,7 +54,7 @@
         in
           rec {
             packages.foo = craneLib.buildPackage {
-            inherit cargoArtifacts;
+              inherit cargoArtifacts;
               pname = "foo";
               src = craneLib.cleanCargoSource ./.;
               sourceRoot = "source/nested";
