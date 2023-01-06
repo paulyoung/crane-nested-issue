@@ -56,8 +56,11 @@
             packages.foo = craneLib.buildPackage {
               inherit cargoArtifacts;
               pname = "foo";
-              src = craneLib.cleanCargoSource ./.;
-              sourceRoot = "source/nested";
+              postUnpack = ''
+                cd $sourceRoot/nested
+                sourceRoot="."
+              '';
+              src = ./.;
               cargoToml = ./nested/Cargo.toml;
               cargoLock = ./nested/Cargo.lock;
               nativeBuildInputs = [
